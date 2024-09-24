@@ -22,7 +22,6 @@ import static org.junit.Assert.*;
 
 @SpringBootTest
 @ActiveProfiles("test")
-@Testcontainers
 public class CardRangeServiceImplIntegrationTest {
 
     @Autowired
