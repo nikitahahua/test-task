@@ -38,15 +38,4 @@ POST-запит:
 
 Ось стек технологій, який використовується в проєкті:
 
--Java 17
--Spring Boot 3.1.4
--PostgreSQL
--Slf4j 
--Flyway 
--Micrometer 
--Spring Retry
--Lombok
--Redisson 
--Shedlock 
--JUnit
--Docker
+Java 17, Spring Boot 3.1.4, PostgreSQL, Slf4j, Flyway, Micrometer, Spring Retry, Lombok, Redisson, Shedlock, JUnit, Docker
