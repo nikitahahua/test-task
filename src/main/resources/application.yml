@@ -1,0 +1,46 @@
+server:
+  port: 8080
+
+app:
+  api-url: "https://ecom-bininfo.s3.eu-west-1.amazonaws.com/bininfo.json.zip"
+  zip-file-path: "bininfo.json.zip"
+  file-path: "bininfo.json"
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
+  datasource:
+    url: jdbc:postgresql://host.docker.internal:5432/cards
+    username: postgres
+    password: root
+    hikari:
+      connection-test-query: SELECT 1
+      connection-timeout: 1000
+      minimum-idle: 3
+      max-lifetime: 30000
+  flyway:
+    url: jdbc:postgresql://host.docker.internal:5432/cards
+    user: postgres
+    password: root
+    locations: classpath:migration
+  profiles:
+    active: dev
+  data:
+    redis:
+      host: host.docker.internal
+      port: 6379
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,prometheus
+  metrics:
+    distribution:
+      percentiles-histogram:
+        "[http.server.requests]": true
+  prometheus:
+    metrics:
+      export:
+        enabled: true

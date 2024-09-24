@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Card Info Lookup</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .error {
+            color: red;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<h1>Card Info Lookup</h1>
+<form action="#" th:action="@{/lookup}" method="get">
+    <label for="cardNumber">Card Number:</label>
+    <input type="text" id="cardNumber" name="cardNumber" placeholder="Enter card number" required>
+    <button type="submit">Submit</button>
+</form>
+
+<div th:if="${errorMessage != null}" class="error">
+    <p th:text="${errorMessage}"></p>
+</div>
+
+<table th:if="${cardInfo != null}">
+    <thead>
+    <tr>
+        <th>BIN</th>
+        <th>Alpha Code</th>
+        <th>Bank</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${cardInfo.bin}"></td>
+        <td th:text="${cardInfo.alphaCode}"></td>
+        <td th:text="${cardInfo.bank}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
